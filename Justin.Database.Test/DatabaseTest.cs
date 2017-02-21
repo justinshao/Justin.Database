@@ -10,7 +10,7 @@ namespace Justin.Database.Test
     {
         private Database GetDatabase()
         {
-            return new OracleDatabase(@"Data Source=//www.tomtawsoft.com:2247/orcl;User ID=KTHIS5;Password=KingTHis");
+            return new OracleDatabase(@"Data Source=//10.1.51.220:1522/orcl;User ID=KTHIS5;Password=KingTHis");
         }
 
         [TestMethod]
@@ -86,6 +86,13 @@ namespace Justin.Database.Test
         public void TestQueryScalar()
         {
             GetDatabase().QueryScalar<DateTime>("select * from test");
+            //var ret =  GetDatabase().QueryScalar<string>(
+            //    @"SELECT VALUE FROM SYS_PARAMETER WHERE BRANCH_CODE=:branchCode AND NAME=:name",
+            //    new DbParameter("name", "PEIS_FILE_SERVER_IP"),
+            //    new DbParameter("branchCode", "00"));
+
+            //Assert.IsNotNull(ret);
+            //Assert.IsNotNull(ret == "mongodb://172.16.140.172:27017");
         }
 
         [TestMethod]

@@ -434,7 +434,7 @@ namespace Justin.Database
         /// </summary>
         /// <param name="cmd"></param>
         /// <param name="parameters"></param>
-        private static void SetParameters(DbCommand cmd, IEnumerable<DbParameter> parameters)
+        protected virtual void SetParameters(DbCommand cmd, IEnumerable<DbParameter> parameters)
         {
             cmd.Parameters.Clear();
 

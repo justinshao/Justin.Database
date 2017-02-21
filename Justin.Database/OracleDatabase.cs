@@ -18,5 +18,18 @@ namespace Justin.Database
         {
             return new OracleDataAdapter();
         }
+
+        protected override void SetParameters(DbCommand cmd, IEnumerable<DbParameter> parameters)
+        {
+            OracleCommand orclCmd = cmd as OracleCommand;
+
+            orclCmd.Parameters.Clear();
+
+            foreach (var p in parameters)
+            {
+                orclCmd.BindByName = true;
+                orclCmd.Parameters.Add(p.Name, p.Value);
+            }
+        }
     }
 }
